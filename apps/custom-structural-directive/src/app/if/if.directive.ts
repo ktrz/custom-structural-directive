@@ -5,15 +5,24 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 })
 export class IfDirective {
   @Input() set csdIf(show: boolean) {
-    if (show) {
-      this.vcr.createEmbeddedView(this.templateRef);
-    } else {
-      this.vcr.clear();
-    }
+    this.displayTemplate(show)
   }
+
+  @Input() csdIfElse?: TemplateRef<unknown>;
 
   constructor(
     private templateRef: TemplateRef<unknown>,
     private vcr: ViewContainerRef
   ) {}
+
+  private displayTemplate(condition: boolean) {
+    this.vcr.clear();
+    if (condition) {
+      this.vcr.createEmbeddedView(this.templateRef);
+    } else {
+      if(this.csdIfElse) {
+        this.vcr.createEmbeddedView(this.csdIfElse)
+      }
+    }
+  }
 }

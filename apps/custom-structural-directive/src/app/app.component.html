@@ -2,9 +2,22 @@
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
-  <div class="flex">
-    <input id="show" type="checkbox" [(ngModel)]="show">
-    <label for="show">Show conditional header</label>
-  </div>
-  <h2 *csdIf="show">My conditional header</h2>
+  <section>
+    <div class="flex">
+      <input id="show" type="checkbox" [(ngModel)]="show" />
+      <label for="show">Show conditional header</label>
+    </div>
+    <h2 *csdIf="show">My conditional header</h2>
+  </section>
+
+  <section>
+    <div class="flex">
+      <input id="showIfElse" type="checkbox" [(ngModel)]="showIfElse" />
+      <label for="showIfElse">Show if/else conditional header</label>
+    </div>
+    <h2 *csdIf="showIfElse; else elseHeader">My conditional header</h2>
+    <ng-template #elseHeader>
+      <h2>My conditional else condition header</h2>
+    </ng-template>
+  </section>
 </main>
