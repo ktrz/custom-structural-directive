@@ -2,5 +2,9 @@
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
-  
+  <div class="flex">
+    <input id="show" type="checkbox" [(ngModel)]="show">
+    <label for="show">Show conditional header</label>
+  </div>
+  <h2 *csdIf="show">My conditional header</h2>
 </main>
