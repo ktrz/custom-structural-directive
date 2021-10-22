@@ -16,8 +16,22 @@
       <label for="showIfElse">Show if/else conditional header</label>
     </div>
     <h2 *csdIf="showIfElse; else elseHeader">My conditional header</h2>
-    <ng-template #elseHeader>
-      <h2>My conditional else condition header</h2>
-    </ng-template>
+  </section>
+
+  <section>
+    <div class="flex">
+      <input id="showIfThenElse" type="checkbox" [(ngModel)]="showIfThenElse" />
+      <label for="showIfThenElse">Show if/else conditional header</label>
+    </div>
+    <ng-container
+      *csdIf="showIfThenElse; then thenHeader; else elseHeader"
+    ></ng-container>
   </section>
 </main>
+
+<ng-template #elseHeader>
+  <h2>My conditional else condition header</h2>
+</ng-template>
+<ng-template #thenHeader>
+  <h2>My conditional then condition header</h2>
+</ng-template>

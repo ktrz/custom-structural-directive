@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'custom-structural-directive';
   show = true
   showIfElse = true
+  showIfThenElse = true
 }
