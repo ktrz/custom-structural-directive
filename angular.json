@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "projects": {
+    "custom-structural-directive": {
+      "projectType": "application",
+      "root": "apps/custom-structural-directive",
+      "sourceRoot": "apps/custom-structural-directive/src",
+      "prefix": "csd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/custom-structural-directive",
+            "index": "apps/custom-structural-directive/src/index.html",
+            "main": "apps/custom-structural-directive/src/main.ts",
+            "polyfills": "apps/custom-structural-directive/src/polyfills.ts",
+            "tsConfig": "apps/custom-structural-directive/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/custom-structural-directive/src/favicon.ico",
+              "apps/custom-structural-directive/src/assets"
+            ],
+            "styles": ["apps/custom-structural-directive/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/custom-structural-directive/src/environments/environment.ts",
+                  "with": "apps/custom-structural-directive/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "custom-structural-directive:build:production"
+            },
+            "development": {
+              "browserTarget": "custom-structural-directive:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "custom-structural-directive:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/custom-structural-directive/src/**/*.ts",
+              "apps/custom-structural-directive/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/custom-structural-directive"],
+          "options": {
+            "jestConfig": "apps/custom-structural-directive/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "custom-structural-directive-e2e": {
+      "root": "apps/custom-structural-directive-e2e",
+      "sourceRoot": "apps/custom-structural-directive-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/custom-structural-directive-e2e/cypress.json",
+            "devServerTarget": "custom-structural-directive:serve:development",
+            "tsConfig": "apps/custom-structural-directive-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "custom-structural-directive:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "apps/custom-structural-directive-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["custom-structural-directive"]
+    }
+  }
+}
