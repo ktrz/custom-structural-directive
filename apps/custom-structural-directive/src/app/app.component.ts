@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'custom-structural-directive';
-  show = true
-  showIfElse = true
-  showIfThenElse = true
+  show = true;
+  showIfElse = true;
+  showIfThenElse = true;
+
+  items = [1, 2, 3, 4, 5];
 }

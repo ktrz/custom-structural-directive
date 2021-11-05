@@ -27,6 +27,13 @@
       *csdIf="showIfThenElse; then thenHeader; else elseHeader"
     ></ng-container>
   </section>
+
+  <section>
+    <h2>csdFor example</h2>
+    <div *csdFor="let item of items">
+      <p>This is item</p>
+    </div>
+  </section>
 </main>
 
 <ng-template #elseHeader>
