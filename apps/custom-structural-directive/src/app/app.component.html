@@ -30,8 +30,26 @@
 
   <section>
     <h2>csdFor example</h2>
-    <div *csdFor="let item of items">
-      <p>This is item</p>
+    <div
+      *csdFor="
+        let item of items;
+        let i = index;
+        let isFirst = first;
+        let isLast = last;
+        let isEven = even;
+        let isOdd = odd;
+        let size = count
+      "
+    >
+      <p>This is item: {{ item }}.</p>
+      <pre>
+        Index: {{ i }}
+        First: {{ isFirst }}
+        Last: {{ isLast }}
+        Even: {{ isEven }}
+        Odd: {{ isOdd }}
+        Count: {{ size }}
+      </pre>
     </div>
   </section>
 </main>
